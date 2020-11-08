@@ -18,6 +18,7 @@ class App
   def init_timer()
     base_sleep = 0.5
     min_sleep_time = 0.1
+    interval = 0.04
     loop do
       if @state.game_finished
         puts 'Game finished'
@@ -28,7 +29,7 @@ class App
       # trigger movement
       @view.render(@state)
       aceleration = @state.snake.positions.length - 2
-      sleeping_time = base_sleep - (0.04 * aceleration)
+      sleeping_time = base_sleep - (interval * aceleration)
       if sleeping_time >= min_sleep_time
         sleep sleeping_time
       else
